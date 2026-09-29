@@ -9,11 +9,69 @@ import { site } from '../config';
   <TopBar />
   <main id="top">
     <Hero />
-    <section class="wrap" style="padding-bottom:72px;max-width:1100px">
-      <h2>What we can review on site</h2>
-      <p>We can discuss customer access from arrival through ordering, dining, and restroom use. An inspection scope may include parking, entrances, routes, seating, service counters, restrooms, and signage. We will confirm the exact scope and deliverables with you before any inspection.</p>
-      <p>New Block is a private business. This service is informational and does not replace legal advice or a government inspection.</p>
+    <section class="sec white" aria-labelledby="scope-heading">
+      <div class="wrap sec-grid">
+        <div class="sec-label label">The inspection</div>
+        <div>
+          <h2 id="scope-heading">Follow the path your customers take.</h2>
+          <p class="lede">Accessibility is experienced across a visit, not at one doorway. We can discuss an on-site review of the areas people use to arrive, order, dine, and leave.</p>
+          <div class="scope-grid">
+            <div><span class="scope-num">01 / ARRIVE</span><h3>Getting in</h3><p>Parking, approach, entrance, and the route into your space.</p></div>
+            <div><span class="scope-num">02 / ORDER &amp; DINE</span><h3>Using the space</h3><p>Customer routes, seating, service counters, and signage.</p></div>
+            <div><span class="scope-num">03 / RESTROOM</span><h3>Completing the visit</h3><p>Restroom access and the path customers take to reach it.</p></div>
+          </div>
+          <p class="scope-note">The exact inspection scope and deliverables are confirmed with you before scheduling.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="process-heading">
+      <div class="wrap sec-grid">
+        <div class="sec-label label">The next step</div>
+        <div>
+          <h2 id="process-heading">Start with a conversation about your restaurant.</h2>
+          <p class="lede">Tell us where it is and what prompted your inquiry. We'll discuss the inspection before you decide whether to book.</p>
+          <div class="ruled process-grid">
+            <div><span class="scope-num">01 / INQUIRE</span><h3>Share your location</h3><p>Send your restaurant details through the form above.</p></div>
+            <div><span class="scope-num">02 / DISCUSS</span><h3>Define the visit</h3><p>We talk through the areas you want reviewed and any immediate concerns.</p></div>
+            <div><span class="scope-num">03 / DECIDE</span><h3>Confirm the details</h3><p>We confirm scope, price, and timing before you book the inspection.</p></div>
+          </div>
+          <a class="btn btn-cta section-cta" href="#book">Discuss my restaurant →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec white" aria-labelledby="questions-heading">
+      <div class="wrap sec-grid">
+        <div class="sec-label label">Questions</div>
+        <div class="questions">
+          <h2 id="questions-heading">What owners usually want to know.</h2>
+          <details><summary>Is this an inspection of my website?</summary><p>No. This inquiry is for an in-person review of your restaurant. Website accessibility is a separate service we can discuss if useful.</p></details>
+          <details><summary>Will I know the price before booking?</summary><p>Yes. We discuss your location and needs, then confirm the proposed scope, price, and scheduling before you decide to book.</p></details>
+          <details><summary>What if I already received a complaint or demand letter?</summary><p>Let us know on the form and call us if you need a prompt response. An inspection does not replace advice from a qualified attorney.</p></details>
+          <details><summary>Does an inspection guarantee ADA compliance?</summary><p>No. The inspection is informational. It does not guarantee compliance or prevent claims, and it is not a government inspection or legal advice.</p></details>
+          <p class="final-note">New Block is a private business. This service is informational and does not replace legal advice or a government inspection.</p>
+        </div>
+      </div>
     </section>
   </main>
   <Footer />
 </Base>
+
+<style>
+  .scope-grid{display:grid;gap:26px;margin:42px 0 24px}
+  @media(min-width:760px){.scope-grid{grid-template-columns:repeat(3,1fr);gap:24px}}
+  .scope-grid>div{border-top:2px solid var(--ink);padding-top:16px}
+  .scope-grid h3,.process-grid h3{margin:12px 0 8px}
+  .scope-grid p{color:var(--ink-2);font-size:.96rem;margin:0}
+  .scope-num{font:700 .75rem/1.2 var(--mono);letter-spacing:.06em;color:var(--blue)}
+  .scope-note,.final-note{color:var(--ink-3);font-size:.88rem;margin:0}
+  .process-grid{margin:40px 0 30px}
+  .section-cta{min-width:260px}
+  .questions h2{margin-bottom:32px}
+  .questions details{border-top:1px solid var(--rule-2);padding:19px 0}
+  .questions details:last-of-type{border-bottom:1px solid var(--rule-2)}
+  .questions summary{font-weight:700;cursor:pointer;list-style-position:outside;padding-right:12px}
+  .questions details p{color:var(--ink-2);margin:14px 0 2px;max-width:70ch}
+  .final-note{margin-top:28px}
+</style>

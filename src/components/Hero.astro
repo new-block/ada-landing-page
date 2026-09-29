@@ -6,30 +6,29 @@ import BookingForm from './BookingForm.astro';
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <!-- Hormozi: call out the avatar so the page matches the ad that sent them -->
       <span class="eyebrow label">
         <Icon name="pin" size={16} stroke={2.2} style="color:var(--blue)" />
-        For restaurant owners in {site.geo}
+        For {site.geo} restaurant owners
       </span>
 
-      <!-- Hormozi headline: dream outcome, in the customer's words -->
-      <h1>See your restaurant through an <mark>accessibility lens.</mark></h1>
+      <h1>Know where access may break down in <mark>your restaurant.</mark></h1>
 
       <p class="sub">
-        Request an in-person review of your restaurant's entrances, customer routes, seating, counters, restrooms, and signage. We'll discuss your location and inspection needs before confirming the scope, price, and time.
+        Request an in-person ADA accessibility inspection in Los Angeles. We'll discuss your restaurant, then agree on the areas to review, price, and schedule before you book.
       </p>
 
+      <p class="offer-line"><strong>From arrival to restroom:</strong> look at the route your customers actually use.</p>
+
       <div class="hero-cta">
-        <a class="btn btn-cta" href="#book">Request an inspection <Icon name="arrow" size={20} stroke={2.5} /></a>
+        <a class="btn btn-cta" href="#book">Discuss my restaurant <Icon name="arrow" size={20} stroke={2.5} /></a>
       </div>
 
       <div class="micro">
-        <span><Icon name="check" size={15} stroke={2.5} />In-person review</span>
-        <span><Icon name="check" size={15} stroke={2.5} />Restaurant-focused scope</span>
+        <span><Icon name="check" size={15} stroke={2.5} />On-site in Los Angeles</span>
+        <span><Icon name="check" size={15} stroke={2.5} />Scope agreed first</span>
         <span><Icon name="check" size={15} stroke={2.5} />No obligation to book</span>
       </div>
 
-      <!-- Hormozi: proof next to the CTA. Numbers come from src/config.ts; blank ones are hidden. -->
       <div class="proof">
         {site.rating && (
           <div>
@@ -63,9 +62,10 @@ import BookingForm from './BookingForm.astro';
   .hero-grid{display:grid;gap:36px}
   @media (min-width:960px){.hero{padding:72px 0 88px}.hero-grid{grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
-  h1{margin-bottom:22px;max-width:14ch}
-  .sub{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--ink-2);max-width:54ch;margin-bottom:28px}
+  h1{margin-bottom:22px;max-width:15ch}
+  .sub{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--ink-2);max-width:54ch;margin-bottom:17px}
   .sub strong{color:var(--ink);font-weight:600}
+  .offer-line{font-size:.98rem;color:var(--ink);max-width:50ch;border-left:3px solid var(--blue);padding-left:14px;margin-bottom:26px}
   .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px}
   .hero-cta .btn{width:100%}
   @media (min-width:560px){.hero-cta .btn{width:auto;min-width:300px}}
