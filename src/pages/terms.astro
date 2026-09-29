@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+---
+
+<Base title={`Terms & Conditions | ${site.company}`} description="Website and SMS terms for New Block restaurant ADA inspection inquiries.">
+  <main class="wrap legal">
+    <a href="/">← Back to the inspection page</a>
+    <h1>Terms &amp; Conditions</h1>
+    <p>Updated September 28, 2026</p>
+    <p>This page is operated by {site.company}. Submitting an inquiry asks us to contact you about an in-person restaurant ADA inspection. It does not itself book or purchase an inspection. We will confirm the scope, availability, price, and any service agreement separately.</p>
+
+    <h2>Information on this site</h2>
+    <p>Website content is general information and is not legal advice. An inspection can identify and document accessibility issues, but no inspection can guarantee that a business will avoid a claim or lawsuit.</p>
+
+    <h2>Optional text messages</h2>
+    <p>Our text messaging program is intended for people who are 18 years of age or older. By opting in, you confirm that you are at least 18.</p>
+    <p>If you check the optional SMS consent box, {site.company} may text you from +1 (949) 569-6374 about your restaurant ADA inspection inquiry and scheduling. Message frequency varies. Message and data rates may apply. Consent to texts is not a condition of purchase.</p>
+    <p>Reply STOP to a message to cancel texts. We may send one confirmation of your opt-out. Reply HELP for assistance, or contact us at <a href={`mailto:${site.email}`}>{site.email}</a> or <a href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a>. To join again, submit a new form and choose text consent. Carriers are not liable for delayed or undelivered messages.</p>
+
+    <h2>Privacy and contact</h2>
+    <p>Read our <a href="/privacy/">Privacy Policy</a> for how we handle information. You can contact {site.company} at {site.address}, <a href={`mailto:${site.email}`}>{site.email}</a>, or <a href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a>.</p>
+  </main>
+</Base>
+
+<style>
+  .legal{max-width:760px;padding-top:56px;padding-bottom:80px}
+  .legal h1{margin:24px 0 10px}
+  .legal h2{font-size:1.4rem;margin:34px 0 8px}
+  .legal p{color:var(--ink-2);line-height:1.7;margin:0 0 18px}
+  .legal a{color:var(--blue);text-decoration:underline}
+</style>

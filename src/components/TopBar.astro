@@ -1,0 +1,28 @@
+---
+import { site } from '../config';
+import Icon from './Icon.astro';
+---
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Home">
+      <Icon name="shield" size={32} style="color:var(--blue)" />
+      <span><b>{site.company}</b><small>{site.tagline}</small></span>
+    </a>
+    <a class="topcall" href={`tel:${site.phoneE164}`}>
+      <Icon name="phone" size={18} style="color:var(--blue)" />
+      <span class="lbl">Questions?</span>
+      <span>{site.phoneDisplay}</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  .topbar{position:sticky;top:0;z-index:40;background:rgba(243,245,247,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand b{font:700 1.35rem/1 var(--display);letter-spacing:.01em;display:block}
+  .brand small{display:block;font:500 .68rem/1 var(--body);color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+  .topcall{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:700;font-size:.95rem;white-space:nowrap}
+  .topcall .lbl{color:var(--ink-3);font-weight:500}
+  @media (max-width:640px){.topcall .lbl{display:none}}
+</style>

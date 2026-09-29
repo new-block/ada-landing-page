@@ -1,0 +1,27 @@
+---
+/**
+ * Paste ad pixels here. They load on every page.
+ *
+ * Use `is:inline` on every <script> you paste so Astro leaves it exactly as the
+ * ad platform gave it to you (no bundling, no hoisting). Example:
+ *
+ *   <script is:inline>
+ *     !function(f,b,e,v,n,t,s){...}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+ *     fbq('init', 'YOUR_PIXEL_ID'); fbq('track', 'PageView');
+ *   </script>
+ *
+ *   <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
+ *   <script is:inline>
+ *     window.dataLayer = window.dataLayer || [];
+ *     function gtag(){dataLayer.push(arguments);}
+ *     gtag('js', new Date()); gtag('config', 'AW-XXXXXXX');
+ *   </script>
+ *
+ * On a successful form submit the page calls fbq('track','Lead') and
+ * gtag('event','generate_lead') if those globals exist, pushes `lead_submitted`
+ * to dataLayer, then redirects to /thank-you. Set your Google Ads conversion
+ * to fire on the /thank-you URL for the cleanest attribution.
+ */
+---
+<!-- TRACKING: Meta Pixel base code goes here -->
+<!-- TRACKING: Google Ads / GA4 tag goes here -->

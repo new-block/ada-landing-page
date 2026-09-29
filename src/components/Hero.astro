@@ -1,0 +1,77 @@
+---
+import { site } from '../config';
+import Icon from './Icon.astro';
+import BookingForm from './BookingForm.astro';
+---
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <!-- Hormozi: call out the avatar so the page matches the ad that sent them -->
+      <span class="eyebrow label">
+        <Icon name="pin" size={16} stroke={2.2} style="color:var(--blue)" />
+        For restaurant owners in {site.geo}
+      </span>
+
+      <!-- Hormozi headline: dream outcome, in the customer's words -->
+      <h1>See your restaurant through an <mark>accessibility lens.</mark></h1>
+
+      <p class="sub">
+        Request an in-person review of your restaurant's entrances, customer routes, seating, counters, restrooms, and signage. We'll discuss your location and inspection needs before confirming the scope, price, and time.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn btn-cta" href="#book">Request an inspection <Icon name="arrow" size={20} stroke={2.5} /></a>
+      </div>
+
+      <div class="micro">
+        <span><Icon name="check" size={15} stroke={2.5} />In-person review</span>
+        <span><Icon name="check" size={15} stroke={2.5} />Restaurant-focused scope</span>
+        <span><Icon name="check" size={15} stroke={2.5} />No obligation to book</span>
+      </div>
+
+      <!-- Hormozi: proof next to the CTA. Numbers come from src/config.ts; blank ones are hidden. -->
+      <div class="proof">
+        {site.rating && (
+          <div>
+            <span class="stars" aria-label="5 out of 5 stars">
+              {[0, 1, 2, 3, 4].map(() => <Icon name="star" size={15} filled />)}
+            </span>
+            <span><b>{site.rating}</b> from {site.reviewCount} restaurant owners</span>
+          </div>
+        )}
+        {site.restaurantsInspected && (
+          <div>
+            <Icon name="building" size={18} />
+            <span><b>{site.restaurantsInspected}</b> restaurants inspected</span>
+          </div>
+        )}
+        {site.license && (
+          <div>
+            <Icon name="award" size={18} />
+            <span><b>Certified</b> inspector, {site.license}</span>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <BookingForm />
+  </div>
+</section>
+
+<style>
+  .hero{padding:40px 0 64px}
+  .hero-grid{display:grid;gap:36px}
+  @media (min-width:960px){.hero{padding:72px 0 88px}.hero-grid{grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
+  h1{margin-bottom:22px;max-width:14ch}
+  .sub{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--ink-2);max-width:54ch;margin-bottom:28px}
+  .sub strong{color:var(--ink);font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px}
+  .hero-cta .btn{width:100%}
+  @media (min-width:560px){.hero-cta .btn{width:auto;min-width:300px}}
+  .gpill{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-weight:700;font-size:.92rem}
+  .proof{display:flex;flex-wrap:wrap;gap:12px 0;margin-top:30px;border-top:1px solid var(--rule-2);padding-top:18px;color:var(--ink)}
+  .proof > div{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--ink-3);padding-right:22px;margin-right:22px;border-right:1px solid var(--rule)}
+  .proof > div:last-child{border-right:0;margin-right:0;padding-right:0}
+  .proof b{color:var(--ink);font-weight:700}
+</style>

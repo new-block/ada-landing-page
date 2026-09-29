@@ -1,0 +1,22 @@
+---
+import { site } from '../config';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span>© {year} {site.company} · {site.address} · <a href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a> · <a href={`mailto:${site.email}`}>{site.email}</a></span>
+      <!-- Meta and Google require these for lead-gen ads. Create the pages or link to existing ones. -->
+      <span><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a></span>
+    </div>
+    <p class="disc">{site.company} is a private business, not a government agency or law firm. Information on this site is not legal advice. No inspection can guarantee that a business will avoid a claim or lawsuit.</p>
+  </div>
+</footer>
+
+<style>
+  footer{padding:36px 0 110px;font-size:.85rem;color:var(--ink-3)}
+  @media (min-width:960px){footer{padding-bottom:40px}}
+  .row{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;margin-bottom:14px}
+  a{color:var(--ink-3)}
+  .disc{font-size:.78rem;color:#7C8898;max-width:92ch}
+</style>

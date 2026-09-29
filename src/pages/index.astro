@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import TopBar from '../components/TopBar.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../config';
+---
+<Base title={site.pageTitle} description={site.description}>
+  <TopBar />
+  <main id="top">
+    <Hero />
+    <section class="wrap" style="padding-bottom:72px;max-width:1100px">
+      <h2>What we can review on site</h2>
+      <p>We can discuss customer access from arrival through ordering, dining, and restroom use. An inspection scope may include parking, entrances, routes, seating, service counters, restrooms, and signage. We will confirm the exact scope and deliverables with you before any inspection.</p>
+      <p>New Block is a private business. This service is informational and does not replace legal advice or a government inspection.</p>
+    </section>
+  </main>
+  <Footer />
+</Base>

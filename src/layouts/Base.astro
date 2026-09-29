@@ -1,0 +1,39 @@
+---
+import '@fontsource/barlow-condensed/600.css';
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource/barlow-condensed/800.css';
+import '@fontsource-variable/public-sans';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+import Tracking from '../components/Tracking.astro';
+import { site } from '../config';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+const { title, description, noindex = false } = Astro.props;
+const ogImage = new URL(site.ogImage, site.url).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <Tracking />
+  </head>
+  <body>
+    <a class="skip" href="#book">Skip to booking form</a>
+    <slot />
+    <script is:inline src="https://link.msgsndr.com/js/external-tracking.js" data-tracking-id="tk_24596f24fc8449e5b9bceb7242e049cc"></script>
+  </body>
+</html>

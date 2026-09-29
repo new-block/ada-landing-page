@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+---
+
+<Base title={`Privacy Policy | ${site.company}`} description="How New Block handles information submitted through its restaurant ADA inspection landing page.">
+  <main class="wrap legal">
+    <a href="/">← Back to the inspection page</a>
+    <h1>Privacy Policy</h1>
+    <p>Updated September 28, 2026</p>
+    <p>{site.company} collects the information you choose to provide when you ask about an in-person restaurant ADA inspection. This may include your name, phone number, email address, restaurant name, city or ZIP code, and details about your inquiry. Our site and service providers may also collect page, referral, campaign, and basic technical information.</p>
+
+    <h2>How we use information</h2>
+    <p>We use this information to respond to your request, discuss or arrange an inspection, keep a record of the inquiry, and understand how people find this page. If you separately choose to receive texts, we may send non-marketing messages about your inquiry and scheduling. You can withdraw that permission by replying STOP.</p>
+
+    <h2>SMS opt-in</h2>
+    <p>The inquiry form has a separate, optional SMS consent checkbox that is unchecked by default. If you check it, you agree to receive customer care texts from New Block Digital Agency LLC about your restaurant ADA inspection inquiry and scheduling. Message frequency varies; message and data rates may apply. Reply HELP for help or STOP to opt out. We record your text preference with your inquiry. Consent to texts is not required to request an inspection.</p>
+
+    <h2>Who helps us process information</h2>
+    <p>We use service providers for website hosting, customer relationship management, analytics, and communications. They process information to provide those services to us. We do not sell mobile numbers or share mobile information or SMS opt-in records with third parties or affiliates for their own marketing or promotional purposes.</p>
+
+    <h2>Data security</h2>
+    <p>We take reasonable steps to protect the information submitted through this site and limit access to people and service providers who need it to handle your inquiry. No method of internet transmission or electronic storage is completely secure.</p>
+
+    <h2>Cookies and tracking</h2>
+    <p>This site and its service providers may use cookies and similar tracking technology to understand visits, measure advertising referrals, and connect an inquiry with its source. You can manage cookies through your browser settings. Disabling them may affect some site features or attribution.</p>
+
+    <h2>Your choices</h2>
+    <p>Text consent is optional. You may ask us to access, correct, or delete information you submitted by contacting us. We keep information for as long as reasonably needed to handle inquiries, run our business, and meet applicable obligations.</p>
+
+    <h2>Contact us</h2>
+    <p>{site.company}<br />{site.address}<br /><a href={`mailto:${site.email}`}>{site.email}</a><br /><a href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a></p>
+    <p>See our <a href="/terms/">Terms &amp; Conditions</a>.</p>
+  </main>
+</Base>
+
+<style>
+  .legal{max-width:760px;padding-top:56px;padding-bottom:80px}
+  .legal h1{margin:24px 0 10px}
+  .legal h2{font-size:1.4rem;margin:34px 0 8px}
+  .legal p{color:var(--ink-2);line-height:1.7;margin:0 0 18px}
+  .legal a{color:var(--blue);text-decoration:underline}
+</style>

@@ -1,0 +1,258 @@
+---
+import { site } from '../config';
+import Icon from './Icon.astro';
+---
+<div class="panel" id="book">
+  <div id="formBody">
+    <h2>Request an inspection</h2>
+    <p class="lead">Tell us about your restaurant. We’ll follow up to discuss the inspection and scheduling.</p>
+
+    <form
+      id="leadForm"
+      novalidate
+      data-endpoint={site.formEndpoint}
+      data-redirect={site.redirectUrl}
+    >
+      <div class="row2">
+        <div class="field">
+          <label for="first_name">First name</label>
+          <input id="first_name" name="first_name" type="text" autocomplete="given-name" placeholder="First name" required />
+        </div>
+        <div class="field">
+          <label for="phone">Mobile phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required minlength="10" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="last_name">Last name</label>
+        <input id="last_name" name="last_name" type="text" autocomplete="family-name" placeholder="Last name" required />
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="restaurant">Restaurant name</label>
+          <input id="restaurant" name="restaurant" type="text" autocomplete="organization" placeholder="e.g. Maria's Trattoria" required />
+        </div>
+        <div class="field">
+          <label for="city">City or ZIP</label>
+          <input id="city" name="city" type="text" autocomplete="postal-code" placeholder="City or ZIP" required />
+        </div>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+      </div>
+      <div class="field">
+        <span class="lbl-span" id="dl-label">Have you received an ADA complaint or demand letter?</span>
+        <div class="seg" role="radiogroup" aria-labelledby="dl-label">
+          <label><input type="radio" name="demand_letter" value="no" checked /><span>No</span></label>
+          <label><input type="radio" name="demand_letter" value="yes" /><span>Yes</span></label>
+          <label><input type="radio" name="demand_letter" value="unsure" /><span>Not sure</span></label>
+        </div>
+      </div>
+
+      <!-- Honeypot: bots fill it, humans never see it -->
+      <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+      <!-- Attribution, filled by the script below -->
+      <input type="hidden" name="utm_source" />
+      <input type="hidden" name="utm_medium" />
+      <input type="hidden" name="utm_campaign" />
+      <input type="hidden" name="utm_content" />
+      <input type="hidden" name="utm_term" />
+      <input type="hidden" name="gclid" />
+      <input type="hidden" name="fbclid" />
+      <input type="hidden" name="page_url" />
+      <input type="hidden" name="referrer" />
+      <input type="hidden" name="sms_consent_text" value="I agree to receive customer care text messages from New Block Digital Agency LLC about my restaurant ADA inspection inquiry and scheduling. These are inquiry follow-ups and scheduling messages, not promotional offers. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out. Consent is optional and not a condition of purchase." />
+      <input type="hidden" name="sms_consent" value="no" />
+
+      <div class="sms-opt-in">
+        <label for="sms_consent">
+          <input id="sms_consent" name="sms_consent" type="checkbox" value="yes" />
+          <span>I agree to receive customer care text messages from New Block Digital Agency LLC about my restaurant ADA inspection inquiry and scheduling. These are inquiry follow-ups and scheduling messages, not promotional offers. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out. Consent is optional and not a condition of purchase.</span>
+        </label>
+        <p>Read our <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms &amp; Conditions</a>.</p>
+        <div class="consent-record">
+          <label for="sms_consent_record">Text preference recorded with your inquiry</label>
+          <input id="sms_consent_record" name="sms_consent_record" type="text" value="No text messages" readonly />
+        </div>
+      </div>
+
+      <button class="btn btn-cta btn-block" type="submit" id="submitBtn">
+        <span>Request an inspection</span> <Icon name="arrow" size={20} stroke={2.5} />
+      </button>
+      <div class="err" id="formErr" hidden>
+        Your request didn't go through. Call us at <a href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a> and we'll book you by phone.
+      </div>
+    </form>
+
+    <div class="form-foot">
+      <Icon name="lock" size={16} style="color:var(--green);flex:none;margin-top:2px" />
+      <span>We’ll use your details to respond to your inquiry. Texting is optional.</span>
+    </div>
+
+    <!-- Hormozi: tell them exactly what happens after they click so the click feels safe -->
+    <div class="next">
+      <h3>What happens next</h3>
+      <ol>
+        <li><b>01</b><span>We review the restaurant details you submit.</span></li>
+        <li><b>02</b><span>We contact you to discuss your inspection needs.</span></li>
+        <li><b>03</b><span>If it is a fit, we confirm scope, price, and scheduling with you.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Inline confirmation (shown only when redirectUrl is empty) -->
+  <div class="success" id="formSuccess" hidden>
+    <div class="big"><Icon name="check" size={32} stroke={2.5} /></div>
+    <h2>Thanks for your inquiry<span id="successName"></span>.</h2>
+    <p>We’ll review it and follow up. You can also call <b>{site.phoneDisplay}</b>.</p>
+    <p id="successUrgent" hidden><b>You mentioned a demand letter.</b> If you need a prompt response, please call us.</p>
+    <a class="btn btn-cta" href={`tel:${site.phoneE164}`}>Call us now</a>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('leadForm') as HTMLFormElement;
+  const btn = document.getElementById('submitBtn') as HTMLButtonElement;
+  const err = document.getElementById('formErr') as HTMLElement;
+  const body = document.getElementById('formBody') as HTMLElement;
+  const success = document.getElementById('formSuccess') as HTMLElement;
+  const cfg = form.dataset; // endpoint and redirect
+
+  // Attribution capture
+  const params = new URLSearchParams(location.search);
+  for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid']) {
+    const el = form.querySelector<HTMLInputElement>(`[name="${k}"]`);
+    if (el) el.value = params.get(k) || '';
+  }
+  form.querySelector<HTMLInputElement>('[name="page_url"]')!.value = location.href;
+  form.querySelector<HTMLInputElement>('[name="referrer"]')!.value = document.referrer || '';
+  const consentCheckbox = form.querySelector<HTMLInputElement>('#sms_consent')!;
+  const consentRecord = form.querySelector<HTMLInputElement>('#sms_consent_record')!;
+  consentCheckbox.addEventListener('change', () => {
+    consentRecord.value = consentCheckbox.checked ? 'Yes — consented to inquiry and scheduling texts' : 'No text messages';
+  });
+
+  // Focus the first field when any CTA is clicked
+  document.querySelectorAll('a[href="#book"]').forEach((a) => {
+    a.addEventListener('click', () => {
+      setTimeout(() => document.getElementById('first_name')?.focus({ preventScroll: true }), 500);
+    });
+  });
+
+  type Lead = Record<string, string>;
+  declare const fbq: any;
+  declare const gtag: any;
+
+  function fireConversion(data: Lead) {
+    try { if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'ADA Inspection Booking' }); } catch (e) {}
+    try { if (typeof gtag === 'function') gtag('event', 'generate_lead'); } catch (e) {}
+    try { (window as any).dataLayer = (window as any).dataLayer || []; (window as any).dataLayer.push({ event: 'lead_submitted', demand_letter: data.demand_letter }); } catch (e) {}
+  }
+
+  async function send(data: Lead) {
+    if (!cfg.endpoint) {
+      // GoHighLevel External Tracking listens for this DOM form submission.
+      // Keep the page in place briefly so its asynchronous capture can complete.
+      await new Promise((resolve) => setTimeout(resolve, 900));
+      return;
+    }
+    const payload = JSON.stringify(data);
+    try {
+      const r = await fetch(cfg.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+    } catch (e) {
+      // Some webhook hosts don't send CORS headers. Retry opaque: the request still lands, we just can't read the response.
+      if (e instanceof TypeError) {
+        await fetch(cfg.endpoint, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: payload });
+      } else {
+        throw e;
+      }
+    }
+  }
+
+  function showSuccess(data: Lead) {
+    const first = (data.first_name || '').trim();
+    document.getElementById('successName')!.textContent = first ? ', ' + first : '';
+    document.getElementById('successUrgent')!.hidden = data.demand_letter !== 'yes';
+    body.hidden = true;
+    success.hidden = false;
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    err.hidden = true;
+    if (form.querySelector<HTMLInputElement>('[name="website"]')!.value) return; // honeypot
+    if (!form.reportValidity()) return;
+
+    const data = Object.fromEntries(new FormData(form).entries()) as Lead;
+    delete data.website;
+    data.sms_consent = form.querySelector<HTMLInputElement>('#sms_consent')!.checked ? 'yes' : 'no';
+    data.sms_consent_language = 'I agree to receive customer care text messages from New Block Digital Agency LLC about my restaurant ADA inspection inquiry and scheduling. These are inquiry follow-ups and scheduling messages, not promotional offers. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out. Consent is optional and not a condition of purchase.';
+    data.submitted_at = new Date().toISOString();
+    data.source_page = 'restaurant-ada-inspection';
+
+    const label = btn.querySelector('span')!;
+    const original = label.textContent;
+    btn.disabled = true;
+    label.textContent = 'Sending your inquiry…';
+
+    try {
+      await send(data);
+      fireConversion(data);
+      if (cfg.redirect) {
+        location.href = cfg.redirect + (data.demand_letter === 'yes' ? '?urgent=1' : '');
+      } else {
+        showSuccess(data);
+      }
+    } catch (ex) {
+      console.error(ex);
+      btn.disabled = false;
+      label.textContent = original;
+      err.hidden = false;
+    }
+  });
+</script>
+
+<style>
+  .panel{background:var(--white);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--blue-soft);padding:24px 22px;position:relative}
+  @media (min-width:960px){.panel{padding:28px 28px 26px}}
+  h2{font-size:2rem;margin-bottom:4px}
+  .lead{color:var(--ink-3);font-size:.95rem;margin-bottom:18px}
+  .slots{display:inline-flex;align-items:center;gap:8px;background:var(--amber-soft);border:1px solid var(--amber-line);color:var(--amber);font:700 .78rem/1 var(--mono);letter-spacing:.04em;padding:7px 10px;margin-bottom:14px}
+  .slots i{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(200,50,26,.45)}60%{box-shadow:0 0 0 7px rgba(200,50,26,0)}}
+  @media (prefers-reduced-motion:reduce){.slots i{animation:none}}
+  .field{margin-bottom:14px}
+  .field label,.field .lbl-span{display:block;font-weight:600;font-size:.88rem;margin-bottom:6px}
+  .field input{width:100%;font:inherit;font-size:1rem;padding:13px 14px;border:1px solid var(--rule-2);border-radius:4px;background:#fff;color:var(--ink)}
+  .field input:focus{border-color:var(--ink)}
+  .field input::placeholder{color:#98A3B0}
+  .sms-opt-in{margin:2px 0 18px;font-size:.82rem;line-height:1.5;color:var(--ink-2)}
+  .sms-opt-in label{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+  .sms-opt-in input{flex:none;width:18px;height:18px;margin:2px 0 0;accent-color:var(--blue)}
+  .sms-opt-in p{margin:8px 0 0 28px}
+  .sms-opt-in a{color:var(--blue);text-decoration:underline}
+  .consent-record{margin:10px 0 0 28px}
+  .consent-record label{display:block;font-size:.74rem;font-weight:600;color:var(--ink-3);margin-bottom:4px}
+  .consent-record input{width:100%;border:1px solid var(--rule);background:var(--paper);color:var(--ink-2);font:inherit;font-size:.78rem;padding:7px 9px;border-radius:4px}
+  .row2{display:grid;gap:12px}
+  @media (min-width:480px){.row2{grid-template-columns:1fr 1fr}}
+  .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .seg label{position:relative;display:block;text-align:center;font-weight:600;font-size:.9rem;padding:11px 8px;border:1px solid var(--rule-2);border-radius:4px;cursor:pointer;background:#fff;margin:0}
+  .seg input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+  .seg label:has(input:checked){border-color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--ink)}
+  .seg label:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:2px}
+  .hp{position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden}
+  .form-foot{margin-top:14px;font-size:.84rem;color:var(--ink-3);display:flex;gap:8px;align-items:flex-start}
+  .next{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule)}
+  .next h3{font:700 .74rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+  .next ol{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+  .next li{display:flex;gap:10px;font-size:.92rem;align-items:flex-start}
+  .next li b{flex:none;font:700 .8rem/1 var(--mono);color:var(--blue);padding-top:4px;min-width:16px}
+  .err{background:var(--red-soft);color:var(--red);border:1px solid #F0C5BD;padding:10px 12px;border-radius:4px;font-size:.9rem;margin-top:10px}
+  .success{text-align:center;padding:12px 4px}
+  .success .big{width:64px;height:64px;border-radius:50%;background:var(--green-soft);color:var(--green);display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .success p{color:var(--ink-2)}
+</style>

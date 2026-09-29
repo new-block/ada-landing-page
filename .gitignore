@@ -1,0 +1,20 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+.DS_Store
+.wrangler/
+ada-live-proof.png
+a2p-review-proof.png
+new-block-ada-upload.zip
+
+# Earlier offer drafts that are not used by the published page.
+src/components/Proof.astro
+src/components/Problem.astro
+src/components/Offer.astro
+src/components/HowItWorks.astro
+src/components/FinalCta.astro
+src/components/Faq.astro
+src/components/Deliverable.astro
+src/components/StickyBar.astro

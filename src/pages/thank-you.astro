@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config';
+---
+<Base title="Thank you for your inquiry" description="New Block will review your restaurant inspection request and follow up." noindex>
+  <main class="wrap">
+    <div class="big"><Icon name="check" size={32} stroke={2.5} /></div>
+    <h1>Thanks for your inquiry.</h1>
+    <p class="lead">We’ll review your restaurant details and follow up to discuss the inspection.</p>
+
+    <div class="urgent" id="urgent" hidden>You mentioned a complaint or demand letter. If you need a prompt response, please call us.</div>
+
+    <div class="panel">
+      <h2>Questions?</h2>
+      <p class="num"><a class="phone" href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a></p>
+      <a class="btn btn-cta" href={`tel:${site.phoneE164}`}><Icon name="phone" size={20} /> Call New Block</a>
+    </div>
+
+    <div class="panel">
+      <h2>What happens next</h2>
+      <ol>
+        <li><b>01</b><span>We review the details you submitted.</span></li>
+        <li><b>02</b><span>We contact you to discuss your inspection needs.</span></li>
+        <li><b>03</b><span>If it is a fit, we confirm the scope, price, and scheduling with you.</span></li>
+      </ol>
+    </div>
+
+    <p class="muted">New Block is a private business, not a government agency or law firm.</p>
+  </main>
+</Base>
+
+<script>
+  // The booking form appends ?urgent=1 when the lead said they already have a demand letter.
+  if (new URLSearchParams(location.search).get('urgent') === '1') {
+    const el = document.getElementById('urgent');
+    if (el) el.hidden = false;
+  }
+</script>
+
+<style>
+  main{max-width:680px;padding:56px 20px 80px}
+  h1{font-size:clamp(2.6rem,6vw,4rem);line-height:1}
+  h2{font:700 .74rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .big{width:64px;height:64px;border-radius:50%;background:var(--green-soft);color:var(--green);display:inline-flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .lead{color:var(--ink-2);font-size:1.15rem;margin:16px 0 28px;max-width:52ch}
+  .lead b{color:var(--ink)}
+  .urgent{background:var(--red-soft);border-left:4px solid var(--red);color:var(--ink);padding:16px 18px;margin-bottom:22px;font-weight:600}
+  .panel{background:#fff;border:1px solid var(--ink);box-shadow:8px 8px 0 var(--blue-soft);padding:24px;margin-bottom:22px}
+  .num{margin:10px 0 16px}
+  .phone{font:800 2.2rem/1 var(--display);color:var(--ink);text-decoration:none;font-variant-numeric:tabular-nums}
+  ol{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+  li{display:flex;gap:12px;align-items:flex-start}
+  li > b{flex:none;font:700 .8rem/1 var(--mono);color:var(--blue);padding-top:4px}
+  .muted{color:var(--ink-3);font-size:.9rem}
+  @media (max-width:559px){.btn{width:100%}}
+</style>
