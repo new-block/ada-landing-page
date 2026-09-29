@@ -8,16 +8,12 @@ import Icon from './Icon.astro';
       <Icon name="shield" size={32} style="color:var(--blue)" />
       <span><b>{site.company}</b><small>{site.tagline}</small></span>
     </a>
-    <a class="topcall" href={`tel:${site.phoneE164}`}>
-      <Icon name="phone" size={18} style="color:var(--blue)" />
-      <span class="lbl">Questions?</span>
-      <span>{site.phoneDisplay}</span>
-    </a>
+    <a class="topcall" href="#choose">Explore reviews <span aria-hidden="true">↗</span></a>
   </div>
 </header>
 
 <style>
-  .topbar{position:sticky;top:0;z-index:40;background:rgba(243,245,247,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+  .topbar{position:sticky;top:0;z-index:40;background:rgba(246,247,241,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
   .brand b{font:700 1.35rem/1 var(--display);letter-spacing:.01em;display:block}

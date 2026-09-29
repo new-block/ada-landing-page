@@ -1,6 +1,6 @@
 export const site = {
   company: 'New Block Digital Agency LLC',
-  tagline: 'In-person restaurant ADA inspections',
+  tagline: 'Accessibility reviews',
   geo: 'Los Angeles',
   phoneE164: '+13108538751',
   phoneDisplay: '+1 (310) 853-8751',
@@ -9,8 +9,8 @@ export const site = {
   license: '',
   url: 'https://ada.newblockagency.com',
   ogImage: '/favicon.svg',
-  pageTitle: 'In-Person Restaurant ADA Inspection | New Block',
-  description: 'Request an in-person restaurant accessibility inspection with New Block Digital Agency. Tell us about your location and we will follow up to discuss the scope and scheduling.',
+  pageTitle: 'On-Site & Website Accessibility Reviews in Los Angeles | New Block',
+  description: 'Explore on-site and website accessibility reviews for Los Angeles businesses. Contact New Block to discuss barriers, review scope, price, and scheduling.',
   // GoHighLevel External Tracking captures the DOM form submission.
   formEndpoint: '',
   redirectUrl: '/thank-you',

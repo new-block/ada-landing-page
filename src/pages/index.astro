@@ -1,77 +1,56 @@
 ---
 import Base from '../layouts/Base.astro';
 import TopBar from '../components/TopBar.astro';
-import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../config';
 ---
 <Base title={site.pageTitle} description={site.description}>
   <TopBar />
   <main id="top">
-    <Hero />
-    <section class="sec white" aria-labelledby="scope-heading">
-      <div class="wrap sec-grid">
-        <div class="sec-label label">The inspection</div>
-        <div>
-          <h2 id="scope-heading">Follow the path your customers take.</h2>
-          <p class="lede">Accessibility is experienced across a visit, not at one doorway. We can discuss an on-site review of the areas people use to arrive, order, dine, and leave.</p>
-          <div class="scope-grid">
-            <div><span class="scope-num">01 / ARRIVE</span><h3>Getting in</h3><p>Parking, approach, entrance, and the route into your space.</p></div>
-            <div><span class="scope-num">02 / ORDER &amp; DINE</span><h3>Using the space</h3><p>Customer routes, seating, service counters, and signage.</p></div>
-            <div><span class="scope-num">03 / RESTROOM</span><h3>Completing the visit</h3><p>Restroom access and the path customers take to reach it.</p></div>
-          </div>
-          <p class="scope-note">The exact inspection scope and deliverables are confirmed with you before scheduling.</p>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><i></i> FOR LOS ANGELES BUSINESS OWNERS</span>
+          <h1>Could customers use your business <em>without barriers?</em></h1>
+          <p class="hero-lede">Accessibility issues can show up at your front door, in your customer experience, or on your website. Get a focused review and a clearer picture of what to address next.</p>
+          <div class="hero-actions"><a class="button" href="#choose">Explore your options <span aria-hidden="true">↗</span></a><small>On-site and website reviews<br />Scope confirmed before you book</small></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true"><div class="visual-top"><span>NEW BLOCK / ACCESSIBILITY</span><span>LOS ANGELES, CA</span></div><div class="visual-number">01<span>/</span>02</div><div class="visual-bottom"><strong>See the barriers.<br />Plan the next move.</strong><b>↗</b></div></div>
+      </div>
+      <div class="wrap hero-strip"><span>PHYSICAL SPACES</span><span>WEBSITES</span><span>ONE CLEAR STARTING POINT</span></div>
+    </section>
+
+    <section class="section choice-section" id="choose">
+      <div class="wrap">
+        <div class="section-intro"><span class="kicker">01 / CHOOSE YOUR REVIEW</span><h2>Where should we look first?</h2><p>Start with the experience you want to understand. If both matter, tell us when we follow up.</p></div>
+        <div class="choice-grid">
+          <article class="choice-card dark-card"><span class="card-index">01 / ON-SITE</span><div class="card-icon" aria-hidden="true">⌁</div><h3>Your physical space</h3><p>Explore the paths customers use to enter, move through, and use your business. We’ll discuss your Los Angeles location and define the review scope with you.</p><ul><li>Entrances and routes</li><li>Customer areas and amenities</li><li>Questions about specific barriers</li></ul><a class="card-link" href="https://api.leadconnectorhq.com/widget/form/YowMRMZFDAMJb83u03uK">Request an on-site review <span aria-hidden="true">↗</span></a></article>
+          <article class="choice-card light-card"><span class="card-index">02 / WEBSITE</span><div class="card-icon" aria-hidden="true">◫</div><h3>Your website</h3><p>Find out where visitors may have trouble navigating, reading, or completing important tasks online. We’ll discuss your site and confirm the review scope.</p><ul><li>Key pages and user journeys</li><li>Accessibility barriers</li><li>Practical next steps</li></ul><a class="card-link" href="https://api.leadconnectorhq.com/widget/form/SAaLLpy9E8UviY7Iatn8">Request a website review <span aria-hidden="true">↗</span></a></article>
         </div>
       </div>
     </section>
 
-    <section class="sec" aria-labelledby="process-heading">
-      <div class="wrap sec-grid">
-        <div class="sec-label label">The next step</div>
-        <div>
-          <h2 id="process-heading">Start with a conversation about your restaurant.</h2>
-          <p class="lede">Tell us where it is and what prompted your inquiry. We'll discuss the inspection before you decide whether to book.</p>
-          <div class="ruled process-grid">
-            <div><span class="scope-num">01 / INQUIRE</span><h3>Share your location</h3><p>Send your restaurant details through the form above.</p></div>
-            <div><span class="scope-num">02 / DISCUSS</span><h3>Define the visit</h3><p>We talk through the areas you want reviewed and any immediate concerns.</p></div>
-            <div><span class="scope-num">03 / DECIDE</span><h3>Confirm the details</h3><p>We confirm scope, price, and timing before you book the inspection.</p></div>
-          </div>
-          <a class="btn btn-cta section-cta" href="#book">Discuss my restaurant →</a>
-        </div>
+    <section class="section problem-section"><div class="wrap problem-grid"><div><span class="kicker">02 / THE REASON TO ACT</span><h2>You can’t fix what you haven’t seen.</h2></div><div><p>People experience access as a whole journey. A barrier at the entrance, in a form, or during checkout can stop that journey. A review helps you identify the questions worth answering before you commit to a larger project.</p><a class="text-link" href="#inquiry">Start the conversation <span aria-hidden="true">↗</span></a></div></div></section>
+
+    <section class="section steps-section"><div class="wrap"><span class="kicker">03 / HOW IT WORKS</span><h2>A simple first step.</h2><div class="steps-grid"><div><span>01</span><h3>Tell us what needs a look</h3><p>Choose your review and send a short inquiry.</p></div><div><span>02</span><h3>Talk through the scope</h3><p>We’ll ask about your business, priorities, and timing.</p></div><div><span>03</span><h3>Decide with the details</h3><p>We confirm the proposed work, price, and schedule before you book.</p></div></div></div></section>
+
+    <section class="section inquiry-section" id="inquiry">
+      <div class="wrap"><div class="section-intro"><span class="kicker">04 / GET STARTED</span><h2>Let’s find your starting point.</h2><p>Pick the review that fits. We’ll follow up to discuss what you need. Submitting an inquiry does not book or purchase a service.</p></div>
+        <div class="forms-grid">
+          <div class="form-panel" id="on-site-form"><span class="form-tag">ON-SITE / LOS ANGELES</span><h3>Request an on-site review</h3><p>Tell us how to reach you. We’ll discuss the location and areas of concern when we connect.</p><a class="button" href="https://api.leadconnectorhq.com/widget/form/YowMRMZFDAMJb83u03uK">Open on-site inquiry form <span aria-hidden="true">↗</span></a><small>Opens New Block’s secure GoHighLevel form.</small></div>
+          <div class="form-panel" id="website-form"><span class="form-tag">WEBSITE / LOS ANGELES</span><h3>Request a website review</h3><p>Share your contact details. We’ll ask for your website and priorities when we follow up.</p><a class="button" href="https://api.leadconnectorhq.com/widget/form/SAaLLpy9E8UviY7Iatn8">Open website inquiry form <span aria-hidden="true">↗</span></a><small>Opens New Block’s secure GoHighLevel form.</small></div>
+        </div><p class="form-footnote">Text message consent is optional and separate from submitting an inquiry.</p>
       </div>
     </section>
 
-    <section class="sec white" aria-labelledby="questions-heading">
-      <div class="wrap sec-grid">
-        <div class="sec-label label">Questions</div>
-        <div class="questions">
-          <h2 id="questions-heading">What owners usually want to know.</h2>
-          <details><summary>Is this an inspection of my website?</summary><p>No. This inquiry is for an in-person review of your restaurant. Website accessibility is a separate service we can discuss if useful.</p></details>
-          <details><summary>Will I know the price before booking?</summary><p>Yes. We discuss your location and needs, then confirm the proposed scope, price, and scheduling before you decide to book.</p></details>
-          <details><summary>What if I already received a complaint or demand letter?</summary><p>Let us know on the form and call us if you need a prompt response. An inspection does not replace advice from a qualified attorney.</p></details>
-          <details><summary>Does an inspection guarantee ADA compliance?</summary><p>No. The inspection is informational. It does not guarantee compliance or prevent claims, and it is not a government inspection or legal advice.</p></details>
-          <p class="final-note">New Block is a private business. This service is informational and does not replace legal advice or a government inspection.</p>
-        </div>
-      </div>
-    </section>
+    <section class="section faq-section"><div class="wrap faq-grid"><div><span class="kicker">05 / GOOD TO KNOW</span><h2>Questions before you start?</h2></div><div class="faq-list">
+      <details><summary>Is this only for restaurants?</summary><p>No. We welcome inquiries from Los Angeles businesses serving the public, including offices, shops, hospitality businesses, and other customer-facing spaces.</p></details>
+      <details><summary>Is a website review the same as an on-site review?</summary><p>No. They look at different customer experiences. You can ask about one or both, and we’ll confirm the appropriate scope before any work begins.</p></details>
+      <details><summary>Is this a certified CASp inspection?</summary><p>A California CASp inspection is a specific service performed by a state-certified specialist. Ask us about the available scope and credentials before booking if you need a formal CASp inspection.</p></details>
+      <details><summary>Will a review guarantee compliance?</summary><p>No review can guarantee full compliance or prevent claims. We’ll discuss what the proposed review covers and what it does not.</p></details>
+      <details><summary>Do I need to book right now?</summary><p>No. Send an inquiry, talk with us about your needs, and decide after we confirm the proposed scope, price, and timing.</p></details>
+    </div></div></section>
+    <section class="bottom-cta"><div class="wrap"><span class="kicker">NEW BLOCK / LOS ANGELES</span><h2>Start with the right questions.</h2><a class="button" href="#choose">Choose your review <span aria-hidden="true">↗</span></a></div></section>
   </main>
   <Footer />
 </Base>
-
-<style>
-  .scope-grid{display:grid;gap:26px;margin:42px 0 24px}
-  @media(min-width:760px){.scope-grid{grid-template-columns:repeat(3,1fr);gap:24px}}
-  .scope-grid>div{border-top:2px solid var(--ink);padding-top:16px}
-  .scope-grid h3,.process-grid h3{margin:12px 0 8px}
-  .scope-grid p{color:var(--ink-2);font-size:.96rem;margin:0}
-  .scope-num{font:700 .75rem/1.2 var(--mono);letter-spacing:.06em;color:var(--blue)}
-  .scope-note,.final-note{color:var(--ink-3);font-size:.88rem;margin:0}
-  .process-grid{margin:40px 0 30px}
-  .section-cta{min-width:260px}
-  .questions h2{margin-bottom:32px}
-  .questions details{border-top:1px solid var(--rule-2);padding:19px 0}
-  .questions details:last-of-type{border-bottom:1px solid var(--rule-2)}
-  .questions summary{font-weight:700;cursor:pointer;list-style-position:outside;padding-right:12px}
-  .questions details p{color:var(--ink-2);margin:14px 0 2px;max-width:70ch}
-  .final-note{margin-top:28px}
-</style>

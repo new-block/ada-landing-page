@@ -3,13 +3,11 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../config';
 ---
-<Base title="Thank you for your inquiry" description="New Block will review your restaurant inspection request and follow up." noindex>
+<Base title="Thank you for your inquiry" description="New Block will review your accessibility inquiry and follow up." noindex>
   <main class="wrap">
     <div class="big"><Icon name="check" size={32} stroke={2.5} /></div>
     <h1>Thanks for your inquiry.</h1>
-    <p class="lead">We’ll review your restaurant details and follow up to discuss the inspection.</p>
-
-    <div class="urgent" id="urgent" hidden>You mentioned a complaint or demand letter. If you need a prompt response, please call us.</div>
+    <p class="lead">We’ll review your details and follow up to discuss the accessibility review.</p>
 
     <div class="panel">
       <h2>Questions?</h2>
@@ -21,7 +19,7 @@ import { site } from '../config';
       <h2>What happens next</h2>
       <ol>
         <li><b>01</b><span>We review the details you submitted.</span></li>
-        <li><b>02</b><span>We contact you to discuss your inspection needs.</span></li>
+        <li><b>02</b><span>We contact you to discuss your accessibility review needs.</span></li>
         <li><b>03</b><span>If it is a fit, we confirm the scope, price, and scheduling with you.</span></li>
       </ol>
     </div>
@@ -29,14 +27,6 @@ import { site } from '../config';
     <p class="muted">New Block is a private business, not a government agency or law firm.</p>
   </main>
 </Base>
-
-<script>
-  // The booking form appends ?urgent=1 when the lead said they already have a demand letter.
-  if (new URLSearchParams(location.search).get('urgent') === '1') {
-    const el = document.getElementById('urgent');
-    if (el) el.hidden = false;
-  }
-</script>
 
 <style>
   main{max-width:680px;padding:56px 20px 80px}

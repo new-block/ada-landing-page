@@ -1,24 +1,23 @@
-# New Block restaurant ADA landing page
+# New Block accessibility landing page
 
-The live site at [ada.newblockagency.com](https://ada.newblockagency.com/) is a static Astro landing page for **in-person restaurant ADA inspection inquiries**. Website accessibility is not advertised as the primary offer.
+The live site at [ada.newblockagency.com](https://ada.newblockagency.com/) presents on-site and website accessibility reviews for Los Angeles businesses.
 
-## Work locally
+## Build and publish
 
 ```bash
 npm ci
-npm run dev
 npm run build
 ```
 
-`npm run build` writes the site to `dist/`. GitHub Pages publishes the committed `docs/` directory from `main`. After a change, build locally, copy the contents of `dist/` into `docs/` (including `CNAME` and `.nojekyll`), then commit and push. The domain's DNS is managed in Cloudflare.
+GitHub Pages publishes the committed `docs/` directory from `main`. After building, copy `dist/` into `docs/`, then commit and push. Cloudflare manages DNS.
 
-## Edit the page
+## Lead capture
 
-- `src/pages/index.astro` composes the landing page.
-- `src/components/BookingForm.astro` contains the inquiry form and optional, unchecked SMS permission box.
-- `src/config.ts` contains the current business identity, contact details, and page metadata.
-- `src/pages/privacy.astro` and `src/pages/terms.astro` contain the public policies used by the form.
+The landing page links to two native GoHighLevel forms in the New Block subaccount:
 
-The form relies on GoHighLevel External Tracking, loaded in `src/layouts/Base.astro`, to create contacts and record form submissions. Check new submissions in the New Block CRM after changing the form or tracking script. SMS permission is optional; text only contacts whose submission records an affirmative preference. The form's browser confirmation is not a delivery receipt from GoHighLevel.
+- On-site: `YowMRMZFDAMJb83u03uK`
+- Website: `SAaLLpy9E8UviY7Iatn8`
 
-Older unverified offer copy and component drafts remain only in the local workspace and are excluded from this public repository.
+Each form collects name, phone, email, and separate optional SMS consent. The forms redirect to `/thank-you/` after submission. Update the URLs in `src/pages/index.astro` if the forms are replaced.
+
+The page loads GoHighLevel External Tracking for visit attribution. The native forms handle lead submission directly; the website's old custom form has been removed. SMS consent is optional and A2P registration is a separate process.
