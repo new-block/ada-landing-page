@@ -1,4 +1,4 @@
-# New Block accessibility landing page
+# ADA Landing Page
 
 The live site at [ada.newblockagency.com](https://ada.newblockagency.com/) presents on-site and website accessibility reviews for Los Angeles businesses.
 
