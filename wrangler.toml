@@ -1,0 +1,4 @@
+name = "new-block-ada"
+account_id = "49b892c84b18b22b27a0d02ed8a6122a"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-11-01"

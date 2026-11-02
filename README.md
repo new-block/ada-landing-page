@@ -9,7 +9,21 @@ npm ci
 npm run build
 ```
 
-GitHub Pages publishes the committed `docs/` directory from `main`. After building, copy `dist/` into `docs/`, then commit and push. Cloudflare manages DNS.
+Publish the built site to the existing `new-block-ada` project in the New Block Digital Agency Cloudflare account:
+
+```bash
+npx wrangler@4.156.1 pages deploy dist --branch main
+```
+
+`wrangler.toml` selects the project, account, and output directory. Sign in with `npx wrangler@4.156.1 login` if needed. Never commit Cloudflare credentials.
+
+The Pages URL is [new-block-ada.pages.dev](https://new-block-ada.pages.dev/). The custom domain must have a CNAME record named `ada` pointing to `new-block-ada.pages.dev`, and its Pages custom-domain status must be Active before considering the migration complete.
+
+### Migration checkpoint — November 1, 2026
+
+The current source was built and published to Cloudflare Pages. The home, privacy, terms, and thank-you pages returned HTTP 200, and both GoHighLevel form links were verified in the deployed home page. The existing Pages custom-domain connection was restarted and is pending the DNS change.
+
+GitHub Pages still publishes the committed `docs/` directory from `main` and serves the custom domain until DNS switches. Keep it available until the Cloudflare custom domain is verified; the old host is the rollback option. Git pushes alone do not deploy this direct-upload Cloudflare project: run the build and publish commands above.
 
 ## Lead capture
 
