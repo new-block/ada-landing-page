@@ -7,17 +7,22 @@ import { site } from '../config';
   <main class="wrap legal" id="top">
     <a href="/">← Back to the accessibility page</a>
     <h1>Privacy Policy</h1>
-    <p>Updated September 28, 2026</p>
-    <p>{site.company} collects the information you choose to provide when you ask about an on-site or website accessibility review. This may include your name, phone number, email address, business details, website address, and details about your inquiry. Our site and service providers may also collect page, referral, campaign, and basic technical information.</p>
+    <p>Updated November 9, 2026</p>
+    <p>{site.company} collects the information you choose to provide when you ask about an on-site or website accessibility review, including through our inquiry forms on this site and our Facebook Instant Form for a free website accessibility audit. This may include your first and last name, phone number, email address, practice or business name, role, ZIP code, website address, and details about your inquiry. Our site and service providers may also collect page, referral, campaign, and basic technical information.</p>
 
     <h2>How we use information</h2>
-    <p>We use this information to respond to your request, discuss or arrange a review, keep a record of the inquiry, and understand how people find this page. If you separately choose to receive texts, we may send non-marketing messages about your inquiry and scheduling. You can withdraw that permission by replying STOP.</p>
+    <p>We use this information to respond to your request, discuss or arrange a review or audit, keep a record of the inquiry, and understand how people find this page. If you separately choose to receive texts, we may send non-marketing messages about your inquiry and scheduling. You can withdraw that permission by replying STOP.</p>
 
     <h2>SMS opt-in</h2>
-    <p>Each inquiry form has a separate, optional SMS consent checkbox that is unchecked by default. If you check it, you agree to receive customer care texts from New Block Digital Agency LLC about your accessibility review inquiry and scheduling. Message frequency varies; message and data rates may apply. Reply HELP for help or STOP to opt out. We record your text preference with your inquiry. Consent to texts is not required to request a review.</p>
+    <p>We collect text consent in two places, and in both it is optional:</p>
+    <ul>
+      <li><strong>Website inquiry forms.</strong> Each form has a separate SMS consent checkbox that is unchecked by default.</li>
+      <li><strong>Facebook Instant Form.</strong> Our form titled “Dental Practice | Free Website Audit | SMS Choice | Nov 2026” on the New Block Facebook Page asks an optional question with two answers: “Yes, I agree to receive texts” and “No, email only.” Neither answer is preselected.</li>
+    </ul>
+    <p>If you check the website box or choose “Yes, I agree to receive texts,” you agree to receive texts from {site.company} at +1 (949) 569-6374 limited to acknowledging your inquiry, coordinating your accessibility audit, and scheduling that you request. We do not send promotional offers by text. If you choose “No, email only,” leave the question blank, or leave the box unchecked, we will not text you. Message frequency varies; message and data rates may apply. Reply HELP for help or STOP to opt out. We record your text preference with your inquiry. Consent to texts is not a condition of purchase or of requesting a review or free audit.</p>
 
     <h2>Who helps us process information</h2>
-    <p>We use service providers for website hosting, customer relationship management, analytics, and communications. They process information to provide those services to us. We do not sell mobile numbers or share mobile information or SMS opt-in records with third parties or affiliates for their own marketing or promotional purposes.</p>
+    <p>We use service providers for website hosting, customer relationship management, analytics, and communications. They process information to provide those services to us. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. We do not sell or share SMS opt-in data or consent with any third party, except service providers that are strictly necessary to deliver the text messages you requested. Those providers may not use that information for their own marketing or any other independent purpose.</p>
 
     <h2>Data security</h2>
     <p>We take reasonable steps to protect the information submitted through this site and limit access to people and service providers who need it to handle your inquiry. No method of internet transmission or electronic storage is completely secure.</p>
@@ -30,7 +35,7 @@ import { site } from '../config';
 
     <h2>Contact us</h2>
     <p>{site.company}<br />{site.address}<br /><a href={`mailto:${site.email}`}>{site.email}</a><br /><a href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a></p>
-    <p>See our <a href="/terms/">Terms &amp; Conditions</a>.</p>
+    <p>See our <a href="/terms/">Terms &amp; Conditions</a> and our <a href="/sms-consent/">SMS consent documentation</a>.</p>
   </main>
 </Base>
 
@@ -40,4 +45,6 @@ import { site } from '../config';
   .legal h2{font-size:1.4rem;margin:34px 0 8px}
   .legal p{color:var(--ink-2);line-height:1.7;margin:0 0 18px}
   .legal a{color:var(--blue);text-decoration:underline}
+  .legal ul{color:var(--ink-2);line-height:1.7;margin:0 0 18px;padding-left:22px}
+  .legal li{margin:0 0 8px}
 </style>

@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+
+const media = 'https://assets.cdn.filesafe.space/duZmMjPaBEU9x96kwW3P/media/';
+const screens = [
+  {
+    src: `${media}6af2095e8128ae72d8c54724.jpg`,
+    alt: 'Facebook Instant Form screen showing the optional text message question with two unselected answers: “Yes, I agree to receive texts” and “No, email only.”',
+    caption: 'Optional SMS question. Neither answer is preselected.',
+  },
+  {
+    src: `${media}6af2095eac5a20a1b0ac4a45.jpg`,
+    alt: 'Facebook Instant Form screen showing the contact fields, including email and phone number, for the free website accessibility audit request.',
+    caption: 'Contact fields, including email and phone number.',
+  },
+  {
+    src: `${media}6af2095e8128ae72d8c54719.jpg`,
+    alt: 'Facebook Instant Form review screen showing links to the New Block Privacy Policy and Terms and Conditions before the form is submitted.',
+    caption: 'Privacy Policy and Terms links shown before submission.',
+  },
+];
+---
+
+<Base title={`SMS Consent | ${site.company}`} description="How New Block collects optional text message consent through its Facebook Instant Form for a free website accessibility audit.">
+  <main class="wrap legal" id="top">
+    <a href="/">← Back to the accessibility page</a>
+    <h1>SMS Consent</h1>
+    <p>Updated November 9, 2026</p>
+    <p>This page documents how {site.company} collects optional text message consent for its SMS campaign. It is a reference for carriers and reviewers. It is not a sign-up form, and nothing on this page collects or records consent.</p>
+
+    <h2>Where consent is collected</h2>
+    <p>This SMS campaign collects consent only through one native Facebook Instant Form on the New Block Facebook Page (Page ID 115760828218967):</p>
+    <ul>
+      <li>Form name: Dental Practice | Free Website Audit | SMS Choice | Nov 2026</li>
+      <li>Form ID: 2225302708112831</li>
+    </ul>
+
+    <h2>How the form works</h2>
+    <ol>
+      <li>A person sees a New Block ad on Facebook and taps <strong>Learn more</strong>.</li>
+      <li>Facebook opens the Instant Form for a free website accessibility audit.</li>
+      <li>The person enters their first name, last name, practice name, website, ZIP code, role, email address, and phone number.</li>
+      <li>The form asks an optional text message question with two answers: “Yes, I agree to receive texts” and “No, email only.” Neither answer is preselected.</li>
+      <li>The form shows links to our <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms &amp; Conditions</a>.</li>
+      <li>The person submits the form.</li>
+    </ol>
+    <p>Only a “Yes, I agree to receive texts” answer is treated as consent. “No, email only” or a blank answer means no texts are sent. Consent to texts is not a condition of purchase or of requesting the free audit.</p>
+
+    <h2>Messages people receive</h2>
+    <p>People who choose “Yes” may receive texts from +1 (949) 569-6374 only to acknowledge their inquiry, coordinate their accessibility audit, and handle scheduling they request. We do not send promotional offers by text. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. The program is intended for people 18 or older. Carriers are not liable for delayed or undelivered messages.</p>
+    <p>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. SMS opt-in data and consent are not sold or shared, except with service providers strictly necessary to deliver the requested messages.</p>
+
+    <h2>Form screens</h2>
+    <p>The images below are captures of the actual Facebook Instant Form screens. Select an image to open it at full size.</p>
+    {screens.map((s) => (
+      <figure>
+        <a href={s.src} target="_blank" rel="noopener">
+          <img src={s.src} alt={s.alt} loading="lazy" decoding="async" />
+          <span class="visually-hidden"> (opens full-size image in a new tab)</span>
+        </a>
+        <figcaption>{s.caption} <a href={s.src} target="_blank" rel="noopener">View full size<span class="visually-hidden"> (opens in a new tab)</span></a></figcaption>
+      </figure>
+    ))}
+
+    <h2>Contact us</h2>
+    <p>{site.company}<br />{site.address}<br /><a href={`mailto:${site.email}`}>{site.email}</a><br /><a href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a></p>
+    <p>See our <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms &amp; Conditions</a>.</p>
+  </main>
+</Base>
+
+<style>
+  .legal{max-width:760px;padding-top:56px;padding-bottom:80px}
+  .legal h1{margin:24px 0 10px}
+  .legal h2{font-size:1.4rem;margin:34px 0 8px}
+  .legal p{color:var(--ink-2);line-height:1.7;margin:0 0 18px}
+  .legal a{color:var(--blue);text-decoration:underline}
+  .legal ul,.legal ol{color:var(--ink-2);line-height:1.7;margin:0 0 18px;padding-left:22px}
+  .legal li{margin:0 0 8px}
+  .legal figure{margin:0 0 28px}
+  .legal figure img{display:block;width:100%;max-width:420px;height:auto;border:1px solid var(--rule);background:var(--white)}
+  .legal figure > a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+  .legal figcaption{color:var(--ink-3);font-size:.95rem;line-height:1.6;margin-top:8px}
+  .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+</style>

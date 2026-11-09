@@ -21,3 +21,7 @@ The landing page links to two native GoHighLevel forms in the New Block subaccou
 Each form collects name, phone, email, and separate optional SMS consent. The forms redirect to `/thank-you/` after submission. Update the URLs in `src/pages/index.astro` if the forms are replaced.
 
 The page loads GoHighLevel External Tracking for visit attribution. The native forms handle lead submission directly; the website's old custom form has been removed. SMS consent is optional and A2P registration is a separate process.
+
+## SMS consent documentation
+
+`/sms-consent/` (`src/pages/sms-consent.astro`) is a public reference page for A2P reviewers. It describes the Facebook Instant Form flow the SMS campaign uses (form `2225302708112831` on Page `115760828218967`) and shows captured form screens hosted in GoHighLevel media. It is documentation only, not a lead form or a way to collect consent. Keep it in sync with the live Facebook form, `privacy.astro`, and `terms.astro`.
